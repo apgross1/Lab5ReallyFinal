@@ -8,13 +8,13 @@ import domain.CardDomainModel;
 import enums.eRank;
 import enums.eSuit; 
 
-public final class Card extends CardDomainModel {
+public class Card extends CardDomainModel {
 
 	
 	/**
 	 * Keep the no-arg constructor private.  I don't want 'Card' created without attributes.
 	 */
-	private Card()
+	protected Card()
 	{
 	}
 	

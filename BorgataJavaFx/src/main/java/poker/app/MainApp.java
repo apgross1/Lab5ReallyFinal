@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import enums.eGame;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +38,7 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;	
 	private Table tbl;	
-	private int iGameType;
+	private eGame iGameType = eGame.NULL;
 	
 	RootLayoutController rootController = null;
 	
@@ -49,7 +50,7 @@ public class MainApp extends Application {
 		
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root, 400, 400);
-
+		primaryStage.centerOnScreen();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Poker");
 
@@ -79,7 +80,7 @@ public class MainApp extends Application {
 			// Give the controller access to the main app.
 			RootLayoutController rootController = loader.getController();
 			rootController.setMainApp(this);
-
+			primaryStage.centerOnScreen();
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -134,19 +135,14 @@ public class MainApp extends Application {
 		tbl.removePlayer(playerToRemove);		
 	}
 
-	public int getiGameType() {
+	public eGame getiGameType() {
+		
 		return iGameType;
 	}
 
-	public void setiGameType(int iGameType) {
+	public void setiGameType(eGame iGameType) {
 		this.iGameType = iGameType;
 	}
 	
-	public ToggleGroup getToggleGroup()
-	{
-		ToggleGroup tgl = rootController.getTglGames();
-		return tgl;
-		
-
-	}
+	
 }

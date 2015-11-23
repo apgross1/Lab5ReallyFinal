@@ -71,6 +71,7 @@ public class Deck extends DeckDomainModel {
 		return FirstCard;
 	}
 
+
 	public int getTotalCards() {
 		// Returns the total number of cards still in the deck
 		return cards.size();

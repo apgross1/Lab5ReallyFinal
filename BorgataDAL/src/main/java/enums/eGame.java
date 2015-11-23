@@ -12,7 +12,7 @@ public enum eGame {
 	DeucesWild(6),
 	AcesAndEights(7),
 	SevenDraw(8), 
-	SuperOmaha(9);
+	SuperOmaha(9), NULL(0);
 	
 	private int gameNbr;
 

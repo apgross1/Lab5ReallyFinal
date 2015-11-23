@@ -1,13 +1,24 @@
 package pokerBase;
 
+import java.util.ArrayList;
+import javafx.scene.image.ImageView;
+
 public class GamePlayPlayerHand {
 
 	private GamePlay game = null;
 	private Player player = null;
 	private Hand hand = null;
 	private Hand BestHand = null;
-			
+	private ArrayList<ImageView> playerCardImg = new ArrayList<ImageView>();
 	
+	public ArrayList<ImageView> getPlayerCardImg() {
+		return playerCardImg;
+	}
+
+	public void setPlayerCardImg(ImageView playerCardImg) {
+		this.playerCardImg.add(playerCardImg);
+	}
+
 	private Player WinningPlayer = null;
 	
 	public GamePlayPlayerHand() {

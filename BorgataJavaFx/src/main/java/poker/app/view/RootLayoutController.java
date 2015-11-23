@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import enums.eGame;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import poker.app.MainApp;
@@ -31,13 +33,25 @@ public class RootLayoutController implements Initializable {
 
     @FXML
     private Menu mnuGame;
-    
     @FXML
-    private ToggleGroup tglGames;
-    
+    private RadioMenuItem FiveCardJoker;
+    @FXML
+    private RadioMenuItem FiveCardWilds;
+    @FXML
+    private RadioMenuItem FiveCardDraw;
+    @FXML
+    private RadioMenuItem SevenCardDraw;
+    @FXML
+    private RadioMenuItem TexasHoldEm;
+    @FXML
+    private RadioMenuItem Omaha;
+    @FXML
+    private RadioMenuItem Close;
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		TexasHoldEm.setSelected(true);
 	 
 /*		CheckMenuItem item1 = new CheckMenuItem("5 card stud");
         item1.selectedProperty().addListener(new ChangeListener(){
@@ -118,6 +132,7 @@ public class RootLayoutController implements Initializable {
         alert.showAndWait();
     }
 
+    
     /**
      * Closes the application.
      */
@@ -131,16 +146,34 @@ public class RootLayoutController implements Initializable {
     @FXML
     private void handleShowBirthdayStatistics() {
     }
+    
+    @FXML
+    private void handleGame() {
+    	if (FiveCardJoker.isSelected()) {
+    		mainApp.setiGameType(eGame.FiveStudOneJoker);
+    	}
+    	else if (FiveCardWilds.isSelected()) {
+    		mainApp.setiGameType(eGame.FiveStudTwoJoker);
+    	}
+    	else if (FiveCardDraw.isSelected()) {
+    		mainApp.setiGameType(eGame.FiveStud);
+    	}
+    	else if (SevenCardDraw.isSelected()) {
+    		mainApp.setiGameType(eGame.SevenDraw);
+    	}
+    	else if (TexasHoldEm.isSelected()) {
+    		mainApp.setiGameType(eGame.TexasHoldEm);
+    	}
+    	else if (Omaha.isSelected()) {
+    		mainApp.setiGameType(eGame.Omaha);
+    	}
+    	
+    	else
+    		System.exit(0);
+    }
 
 
-	public ToggleGroup getTglGames() {
-		return tglGames;
-	}
 
-
-	public void setTglGames(ToggleGroup tglGames) {
-		this.tglGames = tglGames;
-	}
 
 
 
