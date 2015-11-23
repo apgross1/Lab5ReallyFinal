@@ -55,6 +55,7 @@ import pokerBase.Rule;
 import pokerBase.Action;
 import pokerEnums.eDrawAction;
 import pokerEnums.eGameState;
+import pokerEnums.eHandStrength;
 
 public class PokerTableController {
 
@@ -463,22 +464,23 @@ public class PokerTableController {
 			}
 			WinnerController w = new WinnerController();
 			int winnerPosition = WinningPlayer.getiPlayerPosition();
+			eHandStrength handStrength = eHandStrength.getStrength(gme.FindPlayerGame(gme, WinningPlayer).getBestHand().getHandStrength());
 			switch(winnerPosition) {
 			case(1):
-				w.setPlayerWinner("Player 1 Wins!");
+				w.setPlayerWinner("Player 1 Wins with a " + handStrength + "!");
 				break;
 			case(2):
-				w.setPlayerWinner("Player 2 Wins!");
+				w.setPlayerWinner("Player 2 Wins with a " + handStrength + "!");
 				break;
 			case(3):
-				w.setPlayerWinner("Player 3 Wins!");
+				w.setPlayerWinner("Player 3 Wins with a " + handStrength + "!");
 				break;
 			case(4):
-				w.setPlayerWinner("Player 4 Wins!");
+				w.setPlayerWinner("Player 4 Wins with a " + handStrength + "!");
 				break;
 			}
-			mainApp.WinnerLayout();
-			//w.start(this.winnnerBox);
+			
+			w.start(this.winnnerBox);
 			
 		}	
 		else

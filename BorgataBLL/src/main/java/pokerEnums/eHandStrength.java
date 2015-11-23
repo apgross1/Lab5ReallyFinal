@@ -80,5 +80,33 @@ public enum eHandStrength {
 		return iHandStrength;
 	}
 	
+	public static eHandStrength getStrength(int i) {
+		switch(i) {
+		case(10):
+			return eHandStrength.HighCard;
+		case(20):
+			return eHandStrength.Pair;
+		case(30):
+			return eHandStrength.TwoPair;
+		case(40):
+			return eHandStrength.ThreeOfAKind;
+		case(50):
+			return eHandStrength.Straight;
+		case(60):
+			return eHandStrength.Flush;
+		case(70):
+			return eHandStrength.FullHouse;
+		case(80):
+			return eHandStrength.FourOfAKind;
+		case(90):
+			return eHandStrength.StraightFlush;
+		case(100):
+			return eHandStrength.RoyalFlush;
+		case(110):
+			return eHandStrength.FiveOfAKind;
+		}
+		return eHandStrength.Pair;
+	}
+	
 	
 }

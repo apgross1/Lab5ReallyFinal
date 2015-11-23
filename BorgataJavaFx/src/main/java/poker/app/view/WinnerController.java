@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -28,7 +29,7 @@ public class WinnerController extends Application implements Initializable {
         Text text = new Text(10, 40, this.getPlayerWinner());
         text.setFont(new Font(40));
         Scene scene = new Scene(new Group(text));
-
+        scene.fillProperty().set(Color.GREEN);
         stage.setTitle("Poker"); 
         stage.setScene(scene); 
         stage.sizeToScene(); 

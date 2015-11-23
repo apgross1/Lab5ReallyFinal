@@ -93,24 +93,6 @@ public class MainApp extends Application {
 
 	}
 
-	public void WinnerLayout() {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("view/WinnerScreen.fxml"));
-	    WinnerController controller = new WinnerController();
-	    loader.setController(controller);
-	    loader.setRoot(controller);
-	    Parent root;
-	    try {
-	        root = (Parent) loader.load();
-	        Scene scene = new Scene(root, 320, 200);
-	        Stage stage = new Stage();
-	        stage.setScene(scene);
-	        stage.show();
-	    } catch (IOException ex) {
-	    	ex.printStackTrace();
-	    }
-
-	}
-	
 	
 	public void showPokerTable() {
 		try {
