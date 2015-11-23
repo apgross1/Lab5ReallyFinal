@@ -9,9 +9,11 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -30,6 +32,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import poker.app.view.PokerTableController;
 import poker.app.view.RootLayoutController;
+import poker.app.view.WinnerController;
 import pokerBase.Player;
 import pokerBase.Table;
 
@@ -37,8 +40,10 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;	
+	private AnchorPane WinnerLayout;
 	private Table tbl;	
 	private eGame iGameType = eGame.NULL;
+	private Stage winnerStage;
 	
 	RootLayoutController rootController = null;
 	
@@ -88,6 +93,25 @@ public class MainApp extends Application {
 
 	}
 
+	public void WinnerLayout() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("view/WinnerScreen.fxml"));
+	    WinnerController controller = new WinnerController();
+	    loader.setController(controller);
+	    loader.setRoot(controller);
+	    Parent root;
+	    try {
+	        root = (Parent) loader.load();
+	        Scene scene = new Scene(root, 320, 200);
+	        Stage stage = new Stage();
+	        stage.setScene(scene);
+	        stage.show();
+	    } catch (IOException ex) {
+	    	ex.printStackTrace();
+	    }
+
+	}
+	
+	
 	public void showPokerTable() {
 		try {
 			// Load person overview.

@@ -39,6 +39,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import poker.app.MainApp;
 import poker.app.model.CardImage;
@@ -73,7 +74,7 @@ public class PokerTableController {
 	private int iCardDrawn = 0;
 	private int iCardDrawnPlayer = 0;
 	private int iCardDrawnCommon = 0;
-
+	private Stage winnnerBox = new Stage();
 	private Player PlayerCommon = new Player("Common", 0);
 
 	@FXML
@@ -432,8 +433,6 @@ public class PokerTableController {
 							HBox playerHBox = getHBox(WinningPlayer.getiPlayerPosition());
 							for (Node image : playerHBox.getChildren()) {
 								for (CardImage cardImage : gpi.FindPlayerGame(gme, WinningPlayer).getPlayerImgHand()) {
-									System.out.println(image.hashCode());
-									System.out.println(cardImage.getCardImage().hashCode());
 									if (cardImage.getCardImage().equals(image)) {
 										System.out.println("Made it here");
 										TranslateTransition translateTransition = new TranslateTransition(Duration.millis(300), playerHBox.getChildren().get(playerHBox.getChildren().indexOf(image)));
@@ -462,13 +461,25 @@ public class PokerTableController {
 		
 			
 			}
-			AnchorPane anch = new AnchorPane();
-		    Image img = new Image(getClass().getResourceAsStream("winner.png"));
-		    ImageView abc = new ImageView(img);
-		    anch.getChildren().add(abc);
-		    ImageView app = (ImageView) (Node) anch.getChildren().get(0);
-		    app.setX(100);
-		    app.setY(100);
+			WinnerController w = new WinnerController();
+			int winnerPosition = WinningPlayer.getiPlayerPosition();
+			switch(winnerPosition) {
+			case(1):
+				w.setPlayerWinner("Player 1 Wins!");
+				break;
+			case(2):
+				w.setPlayerWinner("Player 2 Wins!");
+				break;
+			case(3):
+				w.setPlayerWinner("Player 3 Wins!");
+				break;
+			case(4):
+				w.setPlayerWinner("Player 4 Wins!");
+				break;
+			}
+			mainApp.WinnerLayout();
+			//w.start(this.winnnerBox);
+			
 		}	
 		else
 			// Re-enable the draw button
